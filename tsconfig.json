@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "jsx": "react",
+    "target": "es5",
+    "module": "es2015", // commonjs
+    "lib": [
+      "ES2015",
+      "ES2015.promise",
+      "ES2017",
+      "ES2017.Object",
+      "ES2018",
+      "ES2019",
+      "ES2019.Object",
+      "DOM",
+      "DOM.Iterable",
+      "ScriptHost",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+    "outDir": "./",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types", "@types"],
+    "paths": {
+      "@Core/*": ["*"],
+      "@Api/*": ["api/*"],
+      "@App/*": ["App/*"],
+      "@Components/*": ["components/*"],
+      "@features/*": ["features/*"],
+      "@Domain/*": ["features/Components/*"],
+      "@Modules/*": ["features/Modules/*"],
+      "@Slice/*": ["features/Slice/*"],
+      "@utils/*": ["utils/*"],
+      "@Interfaces/*": ["@interfaces/*"],
+      "@Type/*": ["@type/*"]
+    }
+  },
+  "include": ["./src/**/*.ts", "@types", "./src/**/*.tsx"],
+  "exclude": ["node_modules", "dom", "__tests__"]
+}

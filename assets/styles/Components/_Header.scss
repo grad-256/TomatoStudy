@@ -1,0 +1,20 @@
+@charset 'UTF-8';
+
+@use '../foundation/mixin' as r;
+@use '../abstruct/variable' as v;
+
+@use "sass:math";
+
+.c-header {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.c-nev {
+  a {
+    margin-right: 2rem;
+  }
+
+  .c-link {
+    font-size: 2rem;
+  }
+}

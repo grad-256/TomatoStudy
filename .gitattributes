@@ -1,0 +1,48 @@
+* text=auto eol=lf
+# (binary is a macro for -text -diff)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.mp4 binary
+*.mp3 binary
+*.gz binary
+*.pdf binary
+
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# misc config
+*.yaml text
+*.yml text
+.editorconfig text
+
+
+# git config
+.gitattributes text
+.gitignore text
+.gitconfig text
+
+
+# source code
+*.php text
+*.css text
+*.sass text
+*.scss text
+*.js text
+*.ts text
+*.json text
+*.html text
+*.svg text
+
+# templates
+*.ejs text
+
+
+# server config
+.htaccess text
+
+
+# /src export-ignore

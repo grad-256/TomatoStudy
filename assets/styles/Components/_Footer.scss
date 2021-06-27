@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+
+@use '../foundation/mixin' as r;
+@use '../abstruct/variable' as v;
+
+@use "sass:math";
+
+.c-footer_container {
+  padding: 5.7rem 3rem 2.3rem;
+  margin-top: 10rem;
+  border-top: 1px solid #cacaca;
+}

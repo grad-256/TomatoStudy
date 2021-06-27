@@ -1,0 +1,53 @@
+{
+  "breadcrumbs.enabled": true,
+  "css.validate": false,
+  "editor.autoIndent": "full",
+  "editor.formatOnSave": false,
+  "editor.minimap.showSlider": "always",
+  "editor.suggestSelection": "first",
+  "editor.wordWrap": "on",
+  "emmet.includeLanguages": {
+    "html": "html",
+    "ejs": "html"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.syntaxProfiles": {
+    "ejs": {
+      "filters": "html,c"
+    }
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.variables": {
+    "lang": "ja"
+  },
+  "files.associations": {
+    "*.html": "html",
+    "*.ejs": "html"
+  },
+  "files.autoGuessEncoding": false,
+  "files.autoSave": "off",
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.DS_Store": true
+  },
+  "files.trimFinalNewlines": true,
+  "git.autofetch": true,
+  "git.suggestSmartCommit": false,
+  "html.suggest.html5": true,
+  "htmlhint.options": {
+    "tagname-lowercase": false,
+    "attr-lowercase": true,
+    "attr-value-double-quotes": false,
+    "doctype-first": false
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "less.validate": false,
+  "scss.validate": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.rendererType": "dom",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.activityBar.visible": true,
+  "workbench.editor.closeEmptyGroups": false
+  // "eslint.workingDirectories": ["./"]
+}

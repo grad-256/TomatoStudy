@@ -1,0 +1,131 @@
+@use './mixin' as r;
+@use '../abstruct/variable' as v;
+
+@use '../../node_modules/sanitize.css/sanitize.css';
+@use '../../node_modules/sanitize.css/forms.css';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+li {
+  list-style-type: none;
+}
+
+th {
+  font-weight: inherit;
+}
+
+address {
+  font-style: inherit;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  padding: 0;
+  border: 0;
+}
+
+button:not(:disabled):not([aria-disabled='true']) {
+  cursor: pointer;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-weight: 400;
+
+  @include r.mq(mdover) {
+    font-size: 1.5rem;
+  }
+}
+
+// Safari用のハックは、Chromeに適用されないようにする
+@supports (-webkit-touch-callout: none) {
+  body {
+    // Safari用のハック
+    height: -webkit-fill-available;
+  }
+}
+
+[v-cloak] {
+  visibility: hidden;
+}
+
+.l-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  @include r.mq(mdless) {
+    min-width: 100%;
+  }
+
+  img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+.is-hover {
+  @include r.mq(mdover) {
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+  }
+
+  &:hover {
+    @include r.mq(mdover) {
+      opacity: 0.6;
+    }
+  }
+}
+
+.pc {
+  display: none;
+
+  @include r.mq(mdless) {
+    display: block;
+  }
+}
+
+.sp {
+  display: block;
+
+  @include r.mq(mdless) {
+    display: none;
+  }
+}

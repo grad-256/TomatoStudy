@@ -1,0 +1,15 @@
+@use "../Components";
+@use '../foundation/mixin' as r;
+
+[data-whatinput='mouse'] *:focus,
+[data-whatinput='touch'] *:focus {
+  outline: none;
+}
+
+.c-nev {
+  padding: 4rem;
+}
+
+.c-site_title {
+  font-size: 2.5rem;
+}
