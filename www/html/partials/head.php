@@ -12,7 +12,7 @@
   <meta property="og:image" content="" />
   <meta property="og:description" content="" />
   <meta property="og:locale" content="ja_JP" />
-  <title></title>
+  <title>Tomato Study | ポモドーロ・テクニックで学習する</title>
   <link rel="stylesheet" href="<?php echo BASE_STYLES_PATH; ?>/main.css">
   <link rel='stylesheet' href='<?php echo BASE_STYLES_PATH; ?>/common/styles.css'>
   <link rel='stylesheet' href='<?php echo BASE_STYLES_PATH; ?>/pages/all/styles.css'>

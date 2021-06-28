@@ -1,4 +1,4 @@
-(self["webpackChunkcota_hairmake"] = self["webpackChunkcota_hairmake"] || []).push([["common/index"],{
+(self["webpackChunkstudyapp"] = self["webpackChunkstudyapp"] || []).push([["common/index"],{
 
 /***/ "./src/common/index.ts":
 /*!*****************************!*\

@@ -6,12 +6,23 @@ CREATE TABLE studyapptable (
   todo04 TEXT,
   todo05 TEXT,
   todo06 TEXT,
-  todo06 TEXT,
-  is_done BOOL DEFAULT false,
-  created_at TIMESTAMP NOT NULL,
+  comment TEXT,
+  created_at DATE NOT NULL,
   PRIMARY KEY (id)
 );
--- updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日時',
+
+CREATE TABLE studyapp_state (
+  id INT NOT NULL AUTO_INCREMENT,
+  is_todo01 BOOLEAN DEFAULT false,
+  is_todo02 BOOLEAN DEFAULT false,
+  is_todo03 BOOLEAN DEFAULT false,
+  is_todo04 BOOLEAN DEFAULT false,
+  is_todo05 BOOLEAN DEFAULT false,
+  is_todo06 BOOLEAN DEFAULT false,
+  created_at DATE NOT NULL,
+  PRIMARY KEY (id)
+);
+-- updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日',
 
 
 SELECT * FROM studyapptable;

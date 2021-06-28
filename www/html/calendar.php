@@ -10,9 +10,6 @@ $pdo = Database::getInstance();
 $stylistranking = new StylistRanking($pdo);
 
 
-require __DIR__ . '/libs/helper.php';
-
-
 require  __DIR__ . '/partials/head.php';
 
 ?>

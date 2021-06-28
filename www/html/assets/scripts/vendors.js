@@ -1,4 +1,4 @@
-(self["webpackChunkcota_hairmake"] = self["webpackChunkcota_hairmake"] || []).push([["vendors"],{
+(self["webpackChunkstudyapp"] = self["webpackChunkstudyapp"] || []).push([["vendors"],{
 
 /***/ "./node_modules/what-input/dist/what-input.js":
 /*!****************************************************!*\

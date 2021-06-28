@@ -24,6 +24,13 @@
   border-radius: 0;
 }
 
+.c-result_comment {
+  width: 75rem;
+  padding: 1.5rem 2rem;
+  font-size: 1.8rem;
+  border: 1px solid #e0e0e0;
+}
+
 .c-label_body {
   display: flex;
   justify-content: center;
@@ -83,7 +90,7 @@
 }
 
 .c-list_body {
-  margin: 3rem 0 0 5rem;
+  margin: 3rem 0 0 2rem;
 }
 
 .c-number {
@@ -92,10 +99,12 @@
 }
 
 .c-list_title {
+  width: 10rem;
   font-weight: bold;
 }
 
 .c-list_text {
+  width: 77rem;
   margin-left: 3rem;
   font-size: 2rem;
 

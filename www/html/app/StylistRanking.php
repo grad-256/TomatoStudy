@@ -5,7 +5,7 @@ namespace MyApp;
 use PDO;
 use Exception;
 
-date_default_timezone_set('UTC');
+date_default_timezone_set('Asia/Tokyo');
 
 class StylistRanking
 {
@@ -21,12 +21,17 @@ class StylistRanking
   {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $_POST = checkInput($_POST);
       // Ticket::validate();
       $action = filter_input(INPUT_GET, 'action');
 
       switch ($action) {
         case 'add':
           $this->add($_POST);
+          $this->addState();
+          break;
+        case 'update':
+          $this->update($_POST);
           break;
         default:
           $redirect = SITE_URL;
@@ -34,15 +39,36 @@ class StylistRanking
           exit;
       }
 
-      $redirect = SITE_URL;
+      $redirect = SITE_URL . "/list.php";
       header('Location: ' . $redirect);
       exit;
     }
   }
 
+  private function update($post)
+  {
+    try {
+      // var_dump($post);
+      $this->pdo->beginTransaction();
+      /**
+       * 当日のコメントを更新する
+       *
+       */
+
+      $stmt = $this->pdo->prepare("UPDATE studyapptable SET comment = :comment WHERE created_at <= CURDATE()");
+      $stmt->bindValue('comment', $post["comment"], \PDO::PARAM_INT);
+      $stmt->execute();
+      $this->pdo->commit();
+    } catch (Exception $e) {
+      // エラーが発生した時はロールバック
+      echo "失敗しました。" . $e->getMessage();
+      $this->pdo->rollBack();
+    }
+  }
+
   private function add($post)
   {
-    $today = date('Y-m-d H:i:s');
+    $today = date('Y-m-d');
 
 
     // foreach ($post as $y => $v) {
@@ -79,6 +105,36 @@ class StylistRanking
     }
   }
 
+  private function addState()
+  {
+    $today = date('Y-m-d');
+
+
+    try {
+      $this->pdo->beginTransaction();
+
+      $stmt = $this->pdo->prepare("INSERT INTO studyapp_state (is_todo01,is_todo02,is_todo03,is_todo04,is_todo05,is_todo06,created_at) VALUES (:is_todo01,:is_todo02,:is_todo03,:is_todo04,:is_todo05,:is_todo06,:created_at)");
+
+      $stmt->bindValue(':is_todo01', 0, PDO::PARAM_STR);
+      $stmt->bindValue(':is_todo02', 0, PDO::PARAM_STR);
+      $stmt->bindValue(':is_todo03', 0, PDO::PARAM_INT);
+      $stmt->bindValue(':is_todo04', 0, PDO::PARAM_INT);
+      $stmt->bindValue(':is_todo05', 0, PDO::PARAM_INT);
+      $stmt->bindValue(':is_todo06', 0, PDO::PARAM_INT);
+      $stmt->bindValue(':created_at', $today, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      $this->pdo->commit();
+    } catch (Exception $e) {
+      echo 'エラーが発生しました。<br>';
+      echo $e->getMessage();
+
+      // エラーが発生した時はロールバック
+      $this->pdo->rollBack();
+    }
+  }
+
 
   public function getAll()
   {
@@ -100,79 +156,42 @@ class StylistRanking
     }
   }
 
-  public function getAccoutData($get)
+  public function getToDay()
   {
-
     try {
       $this->pdo->beginTransaction();
 
-      $stmt = $this->pdo->prepare("SELECT * FROM cota_hairmake_ranking where judgeid = :judgeid");
-      $stmt->bindValue(':judgeid', $get, PDO::PARAM_STR);
+      $stmt = $this->pdo->prepare("SELECT * FROM studyapptable where created_at <= CURDATE()");
       $stmt->execute();
-      $all = $stmt->fetchAll();
+      $all = $stmt->fetch();
 
-      if (empty($all) && count($all) > 0) {
-        echo "審査員はいません。";
-      }
+      $this->pdo->commit();
 
+
+      return $all;
+    } catch (Exception $e) {
+      // エラーが発生した時はロールバック
+      echo "失敗しました。" . $e->getMessage();
+      $this->pdo->rollBack();
+    }
+  }
+
+  public function getToDayState()
+  {
+    try {
+      $this->pdo->beginTransaction();
+
+      $stmt = $this->pdo->prepare("SELECT is_todo01,is_todo02,is_todo03,is_todo04,is_todo05,is_todo06 FROM studyapp_state where created_at <= CURDATE()");
+      $stmt->execute();
+      $all = $stmt->fetch();
 
       $this->pdo->commit();
 
       return $all;
     } catch (Exception $e) {
       // エラーが発生した時はロールバック
-      $this->pdo->rollBack();
       echo "失敗しました。" . $e->getMessage();
-    }
-  }
-
-  public function sumAll()
-  {
-
-    try {
-      $this->pdo->beginTransaction();
-
-      $stmt = $this->pdo->prepare("SELECT SUM(stylist_1),SUM(stylist_2),SUM(stylist_3),SUM(stylist_4),SUM(stylist_5),SUM(stylist_6),SUM(stylist_7),SUM(stylist_8),SUM(stylist_9),SUM(stylist_10),SUM(stylist_11),SUM(stylist_12),SUM(stylist_13),SUM(stylist_14),SUM(stylist_15),SUM(stylist_16),SUM(stylist_17),SUM(stylist_18),SUM(stylist_19),SUM(stylist_20),SUM(stylist_21),SUM(stylist_22),SUM(stylist_23),SUM(stylist_24),SUM(stylist_25),SUM(stylist_26),SUM(stylist_27),SUM(stylist_28),SUM(stylist_29),SUM(stylist_30) FROM cota_hairmake_ranking FOR UPDATE");
-      $stmt->execute();
-
-      $sum = $stmt->fetch();
-
-      if (empty($sum) && count($sum) > 0) {
-        echo "投票された作品がありません。";
-      }
-
-
-      $this->pdo->commit();
-
-      return $sum;
-    } catch (Exception $e) {
       $this->pdo->rollBack();
-      echo "失敗しました。" . $e->getMessage();
-    }
-  }
-
-  public function allAll()
-  {
-
-    try {
-      $this->pdo->beginTransaction();
-
-      $stmt = $this->pdo->prepare("SELECT stylist_1,stylist_2,stylist_3,stylist_4,stylist_5,stylist_6,stylist_7,stylist_8,stylist_9,stylist_10,stylist_11,stylist_12,stylist_13,stylist_14,stylist_15,stylist_16,stylist_17,stylist_18,stylist_19,stylist_20,stylist_21,stylist_22,stylist_23,stylist_24,stylist_25,stylist_26,stylist_27,stylist_28,stylist_29,stylist_30 FROM cota_hairmake_ranking FOR UPDATE");
-      $stmt->execute();
-
-      $all = $stmt->fetchAll();
-
-      if (empty($all) && count($all) > 0) {
-        echo "投票された作品がありません。";
-      }
-
-
-      $this->pdo->commit();
-
-      return $all;
-    } catch (Exception $e) {
-      $this->pdo->rollBack();
-      echo "失敗しました。" . $e->getMessage();
     }
   }
 }

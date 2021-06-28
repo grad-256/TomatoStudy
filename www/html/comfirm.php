@@ -1,8 +1,6 @@
 <?php
 require_once 'config.php';
-
-require __DIR__ . '/libs/helper.php';
-
+require_once(__DIR__ . '/app/config.php');
 
 require  __DIR__ . '/partials/head.php';
 

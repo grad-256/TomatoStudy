@@ -1,4 +1,4 @@
-(self["webpackChunkcota_hairmake"] = self["webpackChunkcota_hairmake"] || []).push([["common/viewport"],{
+(self["webpackChunkstudyapp"] = self["webpackChunkstudyapp"] || []).push([["common/viewport"],{
 
 /***/ "./src/common/viewport.ts":
 /*!********************************!*\

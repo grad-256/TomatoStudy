@@ -14,9 +14,6 @@ $alllist = $stylistranking->getAll();
 
 $countAllList = count($alllist);
 
-require __DIR__ . '/libs/helper.php';
-
-
 require  __DIR__ . '/partials/head.php';
 
 ?>
@@ -32,7 +29,7 @@ require  __DIR__ . '/partials/head.php';
         <?php if (!empty($alllist[$i]->{"created_at"})) : ?>
           <p class="c-time"><?php echo $alllist[$i]->{"created_at"}; ?></p>
         <?php endif; ?>
-        <?php for ($g = 1; $g <= count((array)$alllist[$i])-2; $g++) : ?>
+        <?php for ($g = 1; $g <= count((array)$alllist[$i])-3; $g++) : ?>
           <div class="c-list_body flex items-center">
             <p class="c-list_title">やること<span class="c-number"><?php echo $g; ?></span></p>
             <p class="c-list_text"><?php echo $alllist[$i]->{"todo0" . $g} ?></p>
