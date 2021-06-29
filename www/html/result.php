@@ -11,6 +11,7 @@ $stylistranking = new StylistRanking($pdo);
 
 
 $alllist = $stylistranking->getToDay();
+
 $alllState = $stylistranking->getToDayState();
 $countAllList = count((array)$alllist);
 
@@ -26,9 +27,7 @@ require  __DIR__ . '/partials/head.php';
   <div class="c-body">
     <div class="c-list_wrap">
       <div class="c-list_wrap">
-        <?php if (!empty($alllist->{"created_at"})) : ?>
-          <p class="c-time"><?php echo $alllist->{"created_at"}; ?></p>
-        <?php endif; ?>
+        <p class="c-time"><?php echo $alllist->{"created_at"}; ?></p>
         <?php for ($g = 1; $g <= $countAllList - 3; $g++) : ?>
           <div class="c-list_body flex items-center">
             <p class="c-list_title">やること<span class="c-number"><?php echo $g; ?></span></p>

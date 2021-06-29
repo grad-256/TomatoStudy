@@ -33,6 +33,11 @@ class StylistRanking
         case 'update':
           $this->update($_POST);
           break;
+        case 'updateState':
+          $this->updateState($_POST);
+          $redirect = SITE_URL . 'result.php';
+          header("Location: /' . $redirect");
+          break;
         default:
           $redirect = SITE_URL;
           header("Location: /' . $redirect");
@@ -65,6 +70,36 @@ class StylistRanking
       $this->pdo->rollBack();
     }
   }
+
+  private function updateState($post)
+  {
+
+    // var_dump($post);
+
+    try {
+      $this->pdo->beginTransaction();
+
+      $stmt = $this->pdo->prepare("UPDATE studyapp_state SET is_todo01 = :is_todo01,is_todo02 = :is_todo02,is_todo03 = :is_todo03,is_todo04 = :is_todo04,is_todo05 = :is_todo05,is_todo06 = :is_todo06 WHERE created_at >= CURDATE()");
+
+      $stmt->bindValue(':is_todo01', $post['is_todo01'] ? 1 : 0, PDO::PARAM_STR);
+      $stmt->bindValue(':is_todo02', $post['is_todo02'] ? 1 : 0, PDO::PARAM_STR);
+      $stmt->bindValue(':is_todo03', $post['is_todo03'] ? 1 : 0, PDO::PARAM_INT);
+      $stmt->bindValue(':is_todo04', $post['is_todo04'] ? 1 : 0, PDO::PARAM_INT);
+      $stmt->bindValue(':is_todo05', $post['is_todo05'] ? 1 : 0, PDO::PARAM_INT);
+      $stmt->bindValue(':is_todo06', $post['is_todo06'] ? 1 : 0, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      $this->pdo->commit();
+    } catch (Exception $e) {
+      echo 'エラーが発生しました。<br>';
+      echo $e->getMessage();
+
+      // エラーが発生した時はロールバック
+      $this->pdo->rollBack();
+    }
+  }
+
 
   private function add($post)
   {
@@ -135,13 +170,35 @@ class StylistRanking
     }
   }
 
+  public function archiveState()
+  {
+
+    try {
+      $this->pdo->beginTransaction();
+
+      $stmt = $this->pdo->prepare("SELECT * FROM studyapp_state order by created_at desc");
+
+      $stmt->execute();
+      $all = $stmt->fetchAll();
+
+      $this->pdo->commit();
+      return $all;
+    } catch (Exception $e) {
+      echo 'エラーが発生しました。<br>';
+      echo $e->getMessage();
+
+      // エラーが発生した時はロールバック
+      $this->pdo->rollBack();
+    }
+  }
+
 
   public function getAll()
   {
     try {
       $this->pdo->beginTransaction();
 
-      $stmt = $this->pdo->prepare("SELECT * FROM studyapptable");
+      $stmt = $this->pdo->prepare("SELECT * FROM studyapptable order by created_at desc");
       $stmt->execute();
       $all = $stmt->fetchAll();
 
@@ -158,10 +215,11 @@ class StylistRanking
 
   public function getToDay()
   {
+
     try {
       $this->pdo->beginTransaction();
 
-      $stmt = $this->pdo->prepare("SELECT * FROM studyapptable where created_at <= CURDATE()");
+      $stmt = $this->pdo->prepare("SELECT * FROM studyapptable where created_at >= CURDATE()");
       $stmt->execute();
       $all = $stmt->fetch();
 
@@ -181,7 +239,7 @@ class StylistRanking
     try {
       $this->pdo->beginTransaction();
 
-      $stmt = $this->pdo->prepare("SELECT is_todo01,is_todo02,is_todo03,is_todo04,is_todo05,is_todo06 FROM studyapp_state where created_at <= CURDATE()");
+      $stmt = $this->pdo->prepare("SELECT is_todo01,is_todo02,is_todo03,is_todo04,is_todo05,is_todo06 FROM studyapp_state where created_at >= CURDATE()");
       $stmt->execute();
       $all = $stmt->fetch();
 

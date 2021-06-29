@@ -28,6 +28,7 @@
   width: 75rem;
   padding: 1.5rem 2rem;
   font-size: 1.8rem;
+  resize: none;
   border: 1px solid #e0e0e0;
 }
 
@@ -117,5 +118,56 @@
     content: '';
     background-color: black;
     transform: translateY(-50%) rotate(0.025deg);
+  }
+}
+
+.c-todo_state {
+  .c-list_text {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+  }
+
+  .c-input_todo-check[type='checkbox']:checked {
+    + .c-input_todo-check-wrap {
+      .c-list_text {
+        color: #e0e0e0;
+      }
+    }
+  }
+}
+
+.c-input_todo-check {
+  display: none;
+}
+
+.container {
+  margin-top: 80px;
+
+  a {
+    text-decoration: none;
+  }
+
+  th {
+    height: 30px;
+    text-align: center;
+  }
+
+  td {
+    height: 100px;
+  }
+
+  .today {
+    background: green !important;
+  }
+
+  th:nth-of-type(1),
+  td:nth-of-type(1) {
+    color: red;
+  }
+
+  th:nth-of-type(7),
+  td:nth-of-type(7) {
+    color: blue;
   }
 }

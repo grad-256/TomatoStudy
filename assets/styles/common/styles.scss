@@ -13,3 +13,20 @@
 .c-site_title {
   font-size: 2.5rem;
 }
+
+.c-subtitle {
+  margin-top: 5rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.c-goal_body {
+  width: 100rem;
+  margin: 0 auto;
+
+  li {
+    font-size: 1.7rem;
+    line-height: 1.7;
+    list-style-type: circle;
+  }
+}
