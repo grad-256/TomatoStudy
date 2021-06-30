@@ -5,8 +5,6 @@ namespace MyApp;
 use PDO;
 use Exception;
 
-date_default_timezone_set('Asia/Tokyo');
-
 class StylistRanking
 {
   private $pdo;

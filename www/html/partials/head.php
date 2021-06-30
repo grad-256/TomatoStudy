@@ -1,3 +1,21 @@
+<?php
+
+function nowUrl()
+{
+  $url = '';
+  if (isset($_SERVER['HTTPS'])) {
+    $url .= 'https://';
+  } else {
+    $url .= 'http://';
+  }
+  $url .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $urlarray = explode("/", $url);
+  $last = end($urlarray);
+
+  return str_replace('.php', '', $last);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -23,6 +41,11 @@
   <script src="<?php echo BASE_SCRIPTS_PATH; ?>/vendors.js" defer="defer"></script>
   <script src="<?php echo BASE_SCRIPTS_PATH; ?>/common/index.js" defer="defer"></script>
   <script src="<?php echo BASE_SCRIPTS_PATH; ?>/all/index.js" defer="defer"></script>
+
+  <?php if (nowUrl() === "today") : ?>
+    <script src="<?php echo BASE_SCRIPTS_PATH; ?>/today/index.js" defer="defer"></script>
+  <?php endif; ?>
+
 
 </head>
 

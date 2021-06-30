@@ -7,11 +7,9 @@ define('DSN', 'mysql:host=db;dbname=myapp;charset=utf8mb4');
 define('DB_USER', 'myappuser');
 define('DB_PASS', 'myapppass');
 define('SITE_URL', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST']);
-// define('SITE_URL', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST']. '/cota_hairmake');
 
 require __DIR__ . '/helper.php';
-
-
+date_default_timezone_set('Asia/Tokyo');
 spl_autoload_register(function ($class) {
   $prefix = 'MyApp\\';
 

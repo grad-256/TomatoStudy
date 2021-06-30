@@ -135,6 +135,14 @@
       }
     }
   }
+
+  .c-input_todo-check[type='checkbox'].ischecked {
+    + .c-input_todo-check-wrap {
+      .c-list_text {
+        color: #e0e0e0;
+      }
+    }
+  }
 }
 
 .c-input_todo-check {

@@ -18,8 +18,7 @@ require  __DIR__ . '/partials/head.php';
 
 <?php require  __DIR__ . '/partials/header.php'; ?>
 
-
-<div class="c-form c-comfirm">
+<div class="c-form c-comfirm" data-controller="todayController">
   <h1 class="c-title">本日</h1>
   <div class="c-body">
     <form action="<?php the_url('/'); ?>send.php?action=updateState" method="POST">
@@ -28,7 +27,7 @@ require  __DIR__ . '/partials/head.php';
         <?php for ($g = 1; $g <= count((array)$alllist) - 3; $g++) : ?>
           <div class="c-list_body">
             <label for="todo0<?php echo $g; ?>" class="c-todo_state">
-              <input type="checkbox" name="is_todo0<?php echo $g; ?>" id="todo0<?php echo $g; ?>" class="c-input_todo-check" value="off">
+              <input type="checkbox" name="is_todo0<?php echo $g; ?>" id="todo0<?php echo $g; ?>" class="c-input_todo-check" value="off" data-todayController-target="name" data-action="change->todayController#test">
               <div class="c-input_todo-check-wrap flex items-center">
                 <p class="c-list_title">やること<span class="c-number"><?php echo $g; ?></span></p>
                 <p class="c-list_text"><?php echo $alllist->{"todo0" . $g} ?></p>

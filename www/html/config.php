@@ -1,4 +1,7 @@
 <?php
+// タイムゾーンを設定
+date_default_timezone_set('Asia/Tokyo');
+
 define('CURRENT_URI', $_SERVER['REQUEST_URI']);
 define('BASE_CONTEXT_PATH', '/');
 

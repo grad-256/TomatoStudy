@@ -9,9 +9,6 @@ use MyApp\StylistRanking;
 $pdo = Database::getInstance();
 $stylistranking = new StylistRanking($pdo);
 
-// タイムゾーンを設定
-date_default_timezone_set('Asia/Tokyo');
-
 // 前月・次月リンクが押された場合は、GETパラメーターから年月を取得
 if (isset($_GET['ym'])) {
   $ym = $_GET['ym'];
