@@ -18,8 +18,9 @@ require  __DIR__ . '/partials/head.php';
 
 <?php require  __DIR__ . '/partials/header.php'; ?>
 
-<div class="c-form c-comfirm" data-controller="todayController">
+<div class="c-form c-comfirm" id="app">
   <h1 class="c-title">本日</h1>
+  <a href="<?php the_url('stopwatch.php'); ?>" class="c-link">stopwatch</a>
   <div class="c-body">
     <form action="<?php the_url('/'); ?>send.php?action=updateState" method="POST">
       <div class="c-list_wrap">

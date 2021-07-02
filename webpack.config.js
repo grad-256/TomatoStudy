@@ -46,6 +46,10 @@ module.exports = (_ = {}, arg) => {
       plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
       extensions: ['.ts', '.tsx', '.js', '.json'],
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        vue: 'vue/dist/vue.esm.js',
+        axios: 'axios/dist/axios.js',
+      }
     },
     optimization: {
       runtimeChunk: 'single',

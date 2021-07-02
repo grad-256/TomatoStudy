@@ -179,3 +179,35 @@
     color: blue;
   }
 }
+
+.c-select {
+  width: 20rem;
+  font-size: 2rem;
+  color: #000;
+  border: 1px solid #e0e0e0;
+
+  option {
+    font-size: 2rem;
+  }
+}
+
+.c-time_wrap {
+  font-size: 10rem;
+  color: #0af;
+
+  p {
+    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.c-stopwatch {
+  .c-button {
+    color: #fff;
+    background-color: #0af;
+  }
+}
+
+.c-button:disabled {
+  color: #000;
+  background-color: #fff;
+}

@@ -72,8 +72,6 @@ class StylistRanking
   private function updateState($post)
   {
 
-    // var_dump($post);
-
     try {
       $this->pdo->beginTransaction();
 

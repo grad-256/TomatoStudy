@@ -14,6 +14,7 @@ function nowUrl()
 
   return str_replace('.php', '', $last);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +45,10 @@ function nowUrl()
 
   <?php if (nowUrl() === "today") : ?>
     <script src="<?php echo BASE_SCRIPTS_PATH; ?>/today/index.js" defer="defer"></script>
+  <?php elseif (nowUrl() === "stopwatch") : ?>
+    <script src="<?php echo BASE_SCRIPTS_PATH; ?>/stopwatch/index.js" defer="defer"></script>
+  <?php elseif (nowUrl() === "todo") : ?>
+    <script src="<?php echo BASE_SCRIPTS_PATH; ?>/todo/index.js" defer="defer"></script>
   <?php endif; ?>
 
 
