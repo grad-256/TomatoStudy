@@ -97,8 +97,8 @@ require  __DIR__ . '/partials/head.php';
   <h1 class="c-title">カレンダー</h1>
   <div class="c-body">
     <div class="container">
-      <h3 class="mb-5"><a href="?ym=<?php echo $prev; ?>">&lt;</a> <?php echo $html_title; ?> <a href="?ym=<?php echo $next; ?>">&gt;</a></h3>
-      <table>
+      <h3 class="mb-5 text-center"><a href="?ym=<?php echo $prev; ?>" class="c-calendar_controller mr-5">前月</a><span class="c-calendar_now"><?php echo $html_title; ?></span><a href="?ym=<?php echo $next; ?>" class="c-calendar_controller ml-5">次月</a></h3>
+      <table class="table table-bordered">
         <tr>
           <th>日</th>
           <th>月</th>

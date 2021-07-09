@@ -18,20 +18,25 @@ require  __DIR__ . '/partials/head.php';
 
 <?php require  __DIR__ . '/partials/header.php'; ?>
 
-<div class="c-form c-comfirm" id="app" data-token="<?= Utils::h($_SESSION['token']); ?>">
+<div class="c-form c-comfirm c-todo" id="app" data-token="<?= Utils::h($_SESSION['ticket']); ?>">
   <h1 class="c-title">やること全部リスト</h1>
   <div class="c-body">
-    <span class="purge">Purge</span>
-    <form>
-      <input type="text" name="title" placeholder="Type new todo.">
-      <button type="submit">submit</button>
+    <span class="c-purge c-button text-center purge">Purge</span>
+    <form class="mt-20 text-center">
+      <div>
+        <label for="task">
+          <span>タスク入力</span>
+          <input type="text" name="title" class="c-input ml-20" id="task">
+        </label>
+      </div>
+      <button type="submit" class="c-button mt-20">submit</button>
     </form>
-    <ul>
+    <ul class="mt-20">
       <?php foreach ($todos as $todo) : ?>
-        <li data-id="<?= Utils::h($todo->id); ?>">
-          <input type="checkbox" <?= $todo->is_done ? 'checked' : ''; ?>>
+        <li class="mt-10 c-task_text" data-id="<?= Utils::h($todo->id); ?>">
+          <input type="checkbox" id="checkbox<?= Utils::h($todo->id)?>" <?= $todo->is_done ? 'checked' : ''; ?>>
           <span><?= Utils::h($todo->title); ?></span>
-          <span class="delete">x</span>
+        <span class="delete">delete</span>
         </li>
       <?php endforeach; ?>
     </ul>

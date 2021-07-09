@@ -36,6 +36,11 @@ class StylistRanking
           $redirect = SITE_URL . 'result.php';
           header("Location: /' . $redirect");
           break;
+        case 'updateStudyapptable':
+          $this->updateStudyapptable($_POST);
+          $redirect = SITE_URL . 'result.php';
+          header("Location: /' . $redirect");
+          break;
         default:
           $redirect = SITE_URL;
           header("Location: /' . $redirect");
@@ -58,7 +63,7 @@ class StylistRanking
        *
        */
 
-      $stmt = $this->pdo->prepare("UPDATE studyapptable SET comment = :comment WHERE created_at <= CURDATE()");
+      $stmt = $this->pdo->prepare("UPDATE studyapptable SET comment = :comment WHERE created_at >= CURDATE()");
       $stmt->bindValue('comment', $post["comment"], \PDO::PARAM_INT);
       $stmt->execute();
       $this->pdo->commit();
@@ -83,6 +88,33 @@ class StylistRanking
       $stmt->bindValue(':is_todo04', $post['is_todo04'] ? 1 : 0, PDO::PARAM_INT);
       $stmt->bindValue(':is_todo05', $post['is_todo05'] ? 1 : 0, PDO::PARAM_INT);
       $stmt->bindValue(':is_todo06', $post['is_todo06'] ? 1 : 0, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      $this->pdo->commit();
+    } catch (Exception $e) {
+      echo 'エラーが発生しました。<br>';
+      echo $e->getMessage();
+
+      // エラーが発生した時はロールバック
+      $this->pdo->rollBack();
+    }
+  }
+
+  private function updateStudyapptable($post)
+  {
+
+    try {
+      $this->pdo->beginTransaction();
+
+      $stmt = $this->pdo->prepare("UPDATE studyapptable SET todo01 = :todo01,todo02 = :todo02,todo03 = :todo03,todo04 = :todo04,todo05 = :todo05,todo06 = :todo06 WHERE created_at >= CURDATE()");
+
+      $stmt->bindValue(':todo01', $post['todo01'], PDO::PARAM_STR);
+      $stmt->bindValue(':todo02', $post['todo02'], PDO::PARAM_STR);
+      $stmt->bindValue(':todo03', $post['todo03'], PDO::PARAM_INT);
+      $stmt->bindValue(':todo04', $post['todo04'], PDO::PARAM_INT);
+      $stmt->bindValue(':todo05', $post['todo05'], PDO::PARAM_INT);
+      $stmt->bindValue(':todo06', $post['todo06'], PDO::PARAM_INT);
 
       $stmt->execute();
 

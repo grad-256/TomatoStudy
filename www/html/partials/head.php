@@ -41,7 +41,7 @@ function nowUrl()
   <script src="<?php echo BASE_SCRIPTS_PATH; ?>/runtime.js" defer="defer"></script>
   <script src="<?php echo BASE_SCRIPTS_PATH; ?>/vendors.js" defer="defer"></script>
   <script src="<?php echo BASE_SCRIPTS_PATH; ?>/common/index.js" defer="defer"></script>
-  <script src="<?php echo BASE_SCRIPTS_PATH; ?>/all/index.js" defer="defer"></script>
+  <!-- <script src="<?php echo BASE_SCRIPTS_PATH; ?>/all/index.js" defer="defer"></script> -->
 
   <?php if (nowUrl() === "today") : ?>
     <script src="<?php echo BASE_SCRIPTS_PATH; ?>/today/index.js" defer="defer"></script>

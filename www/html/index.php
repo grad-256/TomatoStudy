@@ -3,10 +3,24 @@
 
 require_once 'config.php';
 
-require_once __DIR__ . '/app/config.php';
+require_once(__DIR__ . '/app/config.php');
+
+use MyApp\Database;
+use MyApp\StylistRanking;
+
+$pdo = Database::getInstance();
+$stylistranking = new StylistRanking($pdo);
+$alllist = $stylistranking->getToDay();
 
 require  __DIR__ . '/partials/head.php';
 
+$state = "";
+
+if ($alllist) {
+  $state = "updateStudyapptable";
+} else {
+  $state = "";
+}
 
 ?>
 
@@ -47,12 +61,17 @@ require  __DIR__ . '/partials/head.php';
       <label for="todo0<?php echo $i; ?>" class="c-label_body">
         <div class="flex items-center">
           <span class="c-label_name">やること<?php echo $i; ?></span>
-          <input type="text" name="todo0<?php echo $i; ?>" id="todo0<?php echo $i; ?>" class="c-input">
+          <input type="text" name="todo0<?php echo $i; ?>" id="todo0<?php echo $i; ?>" class="c-input" value="<?= $alllist->{"todo0" . $i} ? $alllist->{"todo0" . $i} : "" ?>">
         </div>
       </label>
     <?php endfor; ?>
+    <input type="hidden" name="state" value="<?= $state ?>">
     <div class="c-button_wrap">
-      <button type="submit" class="c-button c-button_submit">送信</button>
+      <?php if (isset($alllist)) : ?>
+        <button type="submit" class="c-button c-button_submit">送信</button>
+      <?php else : ?>
+        <button type="submit" class="c-button c-button_submit">変更</button>
+      <?php endif; ?>
     </div>
   </form>
 </div>

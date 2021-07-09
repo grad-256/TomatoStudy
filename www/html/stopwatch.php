@@ -21,7 +21,7 @@ require  __DIR__ . '/partials/head.php';
 <div class="c-form c-comfirm" id="app">
   <h1 class="c-title">Stop Watch</h1>
   <p class="mt-10">
-    <a href="<?php the_url('today.php'); ?>" class="c-link">本日のタスク</a>
+    <a href="<?php the_url('today.php'); ?>" class="c-link c-state_link">本日のタスク</a>
   </p>
   <div class="c-body c-stopwatch" id="app">
     <div class="column">
@@ -32,7 +32,7 @@ require  __DIR__ . '/partials/head.php';
       </div>
       <div class="text-center">
         <select name="selected" id="" v-model="selected" class="c-select">
-          <option value=""></option>
+          <option value="5">5分</option>
           <option value="10">10分</option>
           <option value="25">25分</option>
           <option value="40">40分</option>
@@ -40,17 +40,9 @@ require  __DIR__ . '/partials/head.php';
       </div>
       <div class="flex items-center mt-20">
         <button class="c-button" @click="startTimer" :disabled="isRunning" type="button">START</button>
-        <button class="c-button" @click="pushTime" :disabled="!isRunning" type="button">LAP</button>
         <button class="c-button" @click="stopTimer" :disabled="!isRunning" type="button">STOP</button>
         <button class="c-button" @click="clearAll" type="button">CLEAR</button>
       </div>
-      <ul class="ui bulleted list" v-if="times.length">
-        <li class="item" v-for="item in times">
-          {{ item.hours  }} :
-          {{ item.minutes | zeroPad }} :
-          {{ item.seconds | zeroPad }}
-        </li>
-      </ul>
     </div>
   </div>
 </div>

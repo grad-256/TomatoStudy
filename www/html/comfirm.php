@@ -14,8 +14,8 @@ $countPost = count($_POST);
 
 
 <div class="c-form c-comfirm">
-  <form action="<?php the_url('/'); ?>send.php?action=add" method="POST">
-    <?php for ($i = 1; $i <= $countPost; $i++) : ?>
+  <form action="<?php the_url('/'); ?>send.php?action=<?= $_POST["state"] ? $_POST["state"] : "add" ?>" method="POST">
+    <?php for ($i = 1; $i <= $countPost - 1; $i++) : ?>
       <label for="todo0<?php echo $i; ?>" class="c-label_body">
         <div class="flex items-center">
           <span class="c-label_name">やること<?php echo $i; ?></span>
