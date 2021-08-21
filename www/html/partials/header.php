@@ -1,5 +1,5 @@
 <div>
-  <header class="c-header flex items-center justify-between">
+  <header class="c-header md:flex items-center justify-between">
     <nav class="c-nev">
       <a href="<?php the_url('/'); ?>" class="c-site_title">Tomato Study</a>
       <a href="<?php the_url('today.php'); ?>" class="c-link">本日</a>
@@ -11,6 +11,6 @@
       <a href="<?php the_url('rule.php'); ?>" class="c-link">学習の初め方</a>
       <a href="<?php the_url('concept.php'); ?>" class="c-link">Concept</a>
     </nav>
-    <p class="ml-10">Webエンジニア兼読書家兼投資家</p>
+    <p class="md:ml-10 identity">Webエンジニア兼読書家兼投資家</p>
   </header>
   <main>

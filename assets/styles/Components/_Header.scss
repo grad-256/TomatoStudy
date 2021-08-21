@@ -7,14 +7,27 @@
 
 .c-header {
   border-bottom: 1px solid #e0e0e0;
+
+  @include r.mq(mdless) {
+    width: 96%;
+    margin: 0 auto;
+  }
 }
 
 .c-nev {
   a {
     margin-right: 2rem;
+
+    @include r.mq(mdless) {
+      margin-right: 1rem;
+    }
   }
 
   .c-link {
     font-size: 2rem;
+
+    @include r.mq(mdless) {
+      font-size: 1.5rem;
+    }
   }
 }

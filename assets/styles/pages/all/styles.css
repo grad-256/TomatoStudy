@@ -2,6 +2,7 @@
 @use '../../abstruct/variable' as v;
 @use '../../Components/Animation';
 @use "sass:math";
+
 .c-form {
   width: 90rem;
   margin: 0 auto;

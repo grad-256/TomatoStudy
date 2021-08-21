@@ -59,9 +59,8 @@ if ($alllist) {
   <form action="<?php the_url('/'); ?>comfirm.php" method="post">
     <?php for ($i = 1; $i <= 6; $i++) : ?>
       <label for="todo0<?php echo $i; ?>" class="c-label_body">
-        <div class="flex items-center">
-          <span class="c-label_name">やること<?php echo $i; ?></span>
-          <input type="text" name="todo0<?php echo $i; ?>" id="todo0<?php echo $i; ?>" class="c-input" value="<?= $alllist->{"todo0" . $i} ? $alllist->{"todo0" . $i} : "" ?>">
+        <div class="md:flex items-center"><span class="c-label_name">やること<?php echo $i; ?></span>
+          <input type="text" name="todo0<?php echo $i; ?>" id="todo0<?php echo $i; ?>" class="c-input mt-3" value="<?= $alllist->{"todo0" . $i} ? $alllist->{"todo0" . $i} : "" ?>">
         </div>
       </label>
     <?php endfor; ?>

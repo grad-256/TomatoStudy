@@ -8,25 +8,59 @@
 
 .c-nev {
   padding: 4rem;
+
+  @include r.mq(mdless) {
+    padding: 1rem 0;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .c-site_title {
   font-size: 2.5rem;
+
+  @include r.mq(mdless) {
+    font-size: 1.8rem;
+  }
 }
 
 .c-subtitle {
   margin-top: 5rem;
   font-size: 2rem;
   font-weight: bold;
+
+  @include r.mq(mdless) {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+  }
 }
 
 .c-goal_body {
   width: 100rem;
   margin: 0 auto;
 
+  @include r.mq(mdless) {
+    width: 96%;
+  }
+
   li {
     font-size: 1.7rem;
     line-height: 1.7;
     list-style-type: circle;
+
+    @include r.mq(mdless) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.identity {
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  @include r.mq(mdless) {
+    padding-bottom: 1rem;
   }
 }

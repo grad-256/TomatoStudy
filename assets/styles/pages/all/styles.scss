@@ -9,6 +9,10 @@
 .c-form {
   width: 90rem;
   margin: 0 auto;
+
+  @include r.mq(mdless) {
+    width: 96%;
+  }
 }
 
 .c-input {
@@ -17,6 +21,10 @@
   font-size: 1.8rem;
   border: 1px solid #e0e0e0;
   border-radius: 100vh 100vh;
+
+  @include r.mq(mdless) {
+    width: 100%;
+  }
 }
 
 .c-input_text {
@@ -30,6 +38,10 @@
   font-size: 1.8rem;
   resize: none;
   border: 1px solid #e0e0e0;
+
+  @include r.mq(mdless) {
+    width: 100%;
+  }
 }
 
 .c-label_body {
@@ -37,8 +49,18 @@
   justify-content: center;
   margin-top: 5rem;
 
+  @include r.mq(mdless) {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
   &:first-of-type {
     margin-top: 10rem;
+
+    @include r.mq(mdless) {
+      margin-top: 6rem;
+    }
   }
 }
 
@@ -46,6 +68,10 @@
   .c-label_body {
     padding-bottom: 3rem;
     border-bottom: 1px solid #e0e0e0;
+
+    @include r.mq(mdless) {
+      padding-bottom: 1rem;
+    }
   }
 }
 
@@ -58,6 +84,10 @@
 .c-button_wrap {
   margin-top: 10rem;
   text-align: center;
+
+  @include r.mq(mdless) {
+    margin-top: 6rem;
+  }
 }
 
 .c-button {
@@ -66,10 +96,21 @@
   font-size: 1.8rem;
   border: 1px solid #e0e0e0;
   border-radius: 100vh 100vh;
+
+  @include r.mq(mdless) {
+    width: 80%;
+    padding: 1.6rem 1rem;
+    font-size: 1.5rem;
+  }
 }
 
 .c-button_return {
   margin-right: 5rem;
+
+  @include r.mq(mdless) {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
 }
 
 .c-time {
@@ -80,18 +121,35 @@
   margin-top: 10rem;
   font-size: 2.5rem;
   font-weight: bold;
+
+  @include r.mq(mdless) {
+    margin-top: 5rem;
+    font-size: 2rem;
+  }
 }
 
 .c-body {
   margin-top: 15rem;
 
+  @include r.mq(mdless) {
+    margin-top: 10rem;
+  }
+
   .c-list_wrap:nth-of-type(1n + 2) {
     margin-top: 11rem;
+
+    @include r.mq(mdless) {
+      margin-top: 5rem;
+    }
   }
 }
 
 .c-list_body {
   margin: 3rem 0 0 2rem;
+
+  @include r.mq(mdless) {
+    margin: 3rem 0 0 0;
+  }
 }
 
 .c-number {
@@ -102,12 +160,24 @@
 .c-list_title {
   width: 10rem;
   font-weight: bold;
+
+  @include r.mq(mdless) {
+    width: 100%;
+    font-size: 1.5rem;
+  }
 }
 
 .c-list_text {
   width: 77rem;
   margin-left: 3rem;
   font-size: 2rem;
+
+  @include r.mq(mdless) {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-left: 0;
+    font-size: 1.8rem;
+  }
 
   &.check:before {
     position: absolute;
@@ -242,6 +312,16 @@
 .c-purge {
   display: inline-block;
   cursor: pointer;
+}
+
+.c-task_name {
+  display: inline-block;
+  font-size: 1.5rem;
+
+  @include r.mq(mdless) {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
 }
 
 .c-task_text {

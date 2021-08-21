@@ -22,21 +22,19 @@ require  __DIR__ . '/partials/head.php';
   <h1 class="c-title">やること全部リスト</h1>
   <div class="c-body">
     <span class="c-purge c-button text-center purge">Purge</span>
-    <form class="mt-20 text-center">
-      <div>
-        <label for="task">
-          <span>タスク入力</span>
-          <input type="text" name="title" class="c-input ml-20" id="task">
-        </label>
-      </div>
+    <form class="mt-20">
+      <label for="task">
+        <span class="c-task_name">タスク入力</span>
+        <input type="text" name="title" class="c-input md:ml-20" id="task">
+      </label>
       <button type="submit" class="c-button mt-20">submit</button>
     </form>
     <ul class="mt-20">
       <?php foreach ($todos as $todo) : ?>
         <li class="mt-10 c-task_text" data-id="<?= Utils::h($todo->id); ?>">
-          <input type="checkbox" id="checkbox<?= Utils::h($todo->id)?>" <?= $todo->is_done ? 'checked' : ''; ?>>
+          <input type="checkbox" id="checkbox<?= Utils::h($todo->id) ?>" <?= $todo->is_done ? 'checked' : ''; ?>>
           <span><?= Utils::h($todo->title); ?></span>
-        <span class="delete">delete</span>
+          <span class="delete">delete</span>
         </li>
       <?php endforeach; ?>
     </ul>

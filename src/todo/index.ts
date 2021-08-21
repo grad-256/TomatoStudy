@@ -79,9 +79,10 @@ import 'tslib'
     const title = document.createElement('span')
     title.textContent = titleValue
     const deleteSpan = document.createElement('span')
-    deleteSpan.textContent = 'x'
+    deleteSpan.textContent = 'delete'
     deleteSpan.classList.add('delete')
-
+    // c-task_text
+    li.classList.add('c-task_text')
     li.appendChild(checkbox)
     li.appendChild(title)
     li.appendChild(deleteSpan)
@@ -118,8 +119,6 @@ import 'tslib'
     // @ts-ignore
 
     input.focus()
-
-    console.log('Finish!')
   })
 
   const purge = document.querySelector('.purge')

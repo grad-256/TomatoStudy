@@ -33,7 +33,7 @@ require  __DIR__ . '/partials/head.php';
         <?php for ($g = 1; $g <= count((array)$alllist[$i]) - 3; $g++) :
           if($alllist[$i]->{"created_at"} === $archiveState[$i]->{"created_at"}):
           ?>
-          <div class="c-list_body flex items-center">
+          <div class="c-list_body md:flex items-center">
             <p class="c-list_title">やること<span class="c-number"><?php echo $g; ?></span></p>
             <p class="c-list_text relative <?php echo $archiveState[$i]->{"is_todo0" . $g} === 0 ? "" : "check"; ?>"><?php echo $alllist[$i]->{"todo0" . $g} ?></p>
           </div>

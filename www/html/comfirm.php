@@ -17,7 +17,7 @@ $countPost = count($_POST);
   <form action="<?php the_url('/'); ?>send.php?action=<?= $_POST["state"] ? $_POST["state"] : "add" ?>" method="POST">
     <?php for ($i = 1; $i <= $countPost - 1; $i++) : ?>
       <label for="todo0<?php echo $i; ?>" class="c-label_body">
-        <div class="flex items-center">
+        <div class="md:flex items-center">
           <span class="c-label_name">やること<?php echo $i; ?></span>
           <p class="c-input c-input_text"><?php echo $_POST["todo0" . $i]; ?></p>
           <input type="hidden" name="<?php echo "todo0" . $i; ?>" value="<?php echo $_POST["todo0" . $i]; ?>">

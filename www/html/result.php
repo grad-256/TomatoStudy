@@ -29,7 +29,7 @@ require  __DIR__ . '/partials/head.php';
       <div class="c-list_wrap">
         <p class="c-time"><?php echo $alllist->{"created_at"}; ?></p>
         <?php for ($g = 1; $g <= $countAllList - 3; $g++) : ?>
-          <div class="c-list_body flex items-center">
+          <div class="c-list_body md:flex items-center">
             <p class="c-list_title">やること<span class="c-number"><?php echo $g; ?></span></p>
             <p class="c-list_text relative <?php echo $alllState->{"is_todo0" . $g} === 0 ? "" : "check"; ?>"><?php echo $alllist->{"todo0" . $g} ?></p>
           </div>
